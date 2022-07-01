@@ -1,0 +1,19 @@
+{
+  "name": "newmicroservice",
+  "version": "1.0.0",
+  "description": "micro servicio nuevo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GonzaFyS/newmicroservice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GonzaFyS/newmicroservice/issues"
+  },
+  "homepage": "https://github.com/GonzaFyS/newmicroservice#readme"
+}

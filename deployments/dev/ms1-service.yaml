@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms1-prod-service
+  namespace: prod
+  labels:
+    app: ms1-prod
+spec:
+  type: ClusterIP
+  selector:
+    app: ms1-prod
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP

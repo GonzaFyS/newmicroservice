@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms1-dev
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: ms1-dev
+      build-id: "${BUILD_ID}"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ms1-dev
+        build-id: "${BUILD_ID}"
+        ambiente: dev
+    spec:
+      containers:
+      - name: ms1-dev
+        image: "tgcoriast/ms1:1.0-build${BUILD_ID}"
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
+
+

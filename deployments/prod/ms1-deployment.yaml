@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strapi-prod
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      app: strapi-prod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: strapi-prod
+    spec:
+      containers:
+      - name: strapi-prod
+        image: "tgcoriast/strapi:1.0-build${buildNumber}"
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
+
+

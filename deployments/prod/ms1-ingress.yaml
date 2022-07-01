@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ms1-ingress
+  namespace: prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - ms1.prod.cloud.fys
+    secretName: prod-cloud-fys-tls
+  rules:
+  - host: "ms1.prod.cloud.fys"
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: ms1-prod-service
+              port:
+                number: 80
