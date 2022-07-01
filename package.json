@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/GonzaFyS/newmicroservice/issues"
   },
-  "homepage": "https://github.com/GonzaFyS/newmicroservice#readme"
+  "homepage": "https://github.com/GonzaFyS/newmicroservice#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.7"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0"
+  }
 }
