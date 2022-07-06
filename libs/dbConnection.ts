@@ -1,7 +1,7 @@
 import {Connection, createConnection, getConnection} from "typeorm";
 import ORMConfig from "../ormconfig";
 
-export const connectPostgreSQL = async () => {
+export const connectmySQL = async () => {
   let connection: Connection | undefined;
   try {
     connection = getConnection();
@@ -23,9 +23,9 @@ export const connectPostgreSQL = async () => {
   }
 };
 
-export const TryPostgreSQLConnection = async (onError: Function, next?: Function) => {
+export const TrymySQLConnection = async (onError: Function, next?: Function) => {
   try {
-    await connectPostgreSQL();
+    await connectmySQL();
     if (next) {
       next();
     }

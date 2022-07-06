@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/GonzaFyS/newmicroservice#readme",
   "dependencies": {
+    "@nestjs/typeorm": "^8.1.4",
     "express": "^4.18.1",
+    "joi": "^17.6.0",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.7"
   },

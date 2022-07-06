@@ -1,6 +1,6 @@
 import express from 'express';
 import itemsRouter from './routes/items'
-import { connectPostgreSQL } from '../libs/dbConnection';
+import { connectmySQL } from '../libs/dbConnection';
 
 import { logErrors, boomErrorHandler, errorHandler } from './middlewares/errorHandler';
 
@@ -25,7 +25,7 @@ app.use(errorHandler);
 app.listen(PORT, HOST, async () => {
     try {
         //connect to postgreSQL database
-        await connectPostgreSQL();
+        await connectmySQL();
     } catch (error) {
         console.log(error);
         console.log(
