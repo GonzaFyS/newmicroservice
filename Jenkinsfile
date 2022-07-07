@@ -55,6 +55,26 @@ pipeline {
       }
     }
 
+    stage('deploy as stable(dev)?') {
+      steps {
+        script{
+          if(env.GIT_BRANCH == 'origin/dev'){
+            echo "Deploying as testing";
+            sh "echo \$BUILD_ID | cat deployments/dev/ms2-deployment-template.yaml | envsubst > deployments/dev/ms2-deployment-buildNumber.yaml  "            
+            sh 'kubectl get pods -n dev'
+            sh 'kubectl delete deployment -n dev --ignore-not-found=true ms2-dev '
+            sh 'kubectl replace -f deployments/dev/ms2-service.yaml'
+            sh 'kubectl apply -f deployments/dev/ms2-ingress.yaml'
+            sh 'kubectl delete --ignore-not-found=true -f deployments/dev/ms2-deployment-buildNumber.yaml'
+            sh 'kubectl apply -f deployments/dev/ms2-deployment-buildNumber.yaml'
+            echo 'Get pods after delete'
+            sh 'kubectl get pods -n dev'
+            sh 'chmod +x deployments/waiting-for-running.sh'
+            sh "./deployments/waiting-for-running.sh ${env.BUILD_ID} dev"
+          }
+        }
+      }
+    }
 
   }
 }

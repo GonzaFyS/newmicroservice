@@ -1,22 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ms1-ingress
+  name: ms2-ingress
   namespace: dev
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - ms1.dev.cloud.fys
+    - ms2.dev.cloud.fys
     secretName: dev-cloud-fys-tls
   rules:
-  - host: "ms1.dev.cloud.fys"
+  - host: "ms2.dev.cloud.fys"
     http:
       paths:
         - pathType: Prefix
           path: "/"
           backend:
             service:
-              name: ms1-dev-service
+              name: ms2-dev-service
               port:
                 number: 80
