@@ -1,25 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: strapi-dev
+  name: ms2-dev
   namespace: dev
 spec:
   selector:
     matchLabels:
-      app: strapi-dev
+      app: ms2-dev
   replicas: 1
   template:
     metadata:
       labels:
-        app: strapi-dev
+        app: ms2-dev
     spec:
       containers:
-      - name: strapi-dev
-        image: "tgcoriast/strapi:1.0-build${buildNumber}"
+      - name: ms2-dev
+        image: "tgcoriast/ms2:latest"
         imagePullPolicy: Always
         ports:
           - containerPort: 80
+        env:
+        - name: HOST
+          value: "0.0.0.0"
+        - name: PORT
+          value: "80"    
       imagePullSecrets:
       - name: regcred
-
-
