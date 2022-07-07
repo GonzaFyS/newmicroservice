@@ -20,10 +20,17 @@ pipeline {
   
     stage('Build image') {
       steps {
-            script{              
+            script{       
+              if(env.GIT_BRANCH == 'origin/main'){
               sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
               // sh 'docker 2>/dev/null 1>&2 rmi ms1:1.0 | true'
               sh "docker build --build-arg BUILD=${env.BUILD_ID} -t ms2:1.0-build${env.BUILD_ID} ."
+              } 
+              if(env.GIT_BRANCH == 'origin/dev'){
+              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+              // sh 'docker 2>/dev/null 1>&2 rmi ms1:1.0 | true'
+              sh "docker build --build-arg BUILD=${env.BUILD_ID} -t ms2:1.0-build${env.BUILD_ID} -f Dockerfile.dev ."
+              }
             }
       }
     }
