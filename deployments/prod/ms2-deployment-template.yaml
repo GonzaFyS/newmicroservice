@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms1-prod
+  name: ms2-prod
   namespace: prod
 spec:
   selector:
     matchLabels:
-      app: ms1-prod
+      app: ms2-prod
       build-id: "${BUILD_ID}"
   replicas: 1
   template:
     metadata:
       labels:
-        app: ms1-prod
+        app: ms2-prod
         build-id: "${BUILD_ID}"
         ambiente: prod
     spec:
       containers:
-      - name: ms1-prod
-        image: "tgcoriast/ms1:1.0-build${BUILD_ID}"
+      - name: ms2-prod
+        image: "tgcoriast/ms2:1.0-build${BUILD_ID}"
         imagePullPolicy: Always
         ports:
           - containerPort: 80
