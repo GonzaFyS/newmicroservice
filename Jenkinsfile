@@ -24,6 +24,7 @@ pipeline {
               sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
               // sh 'docker 2>/dev/null 1>&2 rmi ms1:1.0 | true'
               sh "docker build --build-arg BUILD=${env.BUILD_ID} -t ms2:1.0-build${env.BUILD_ID} ."
+        }
       }
     }
     stage('Push image to Docker Hub'){
