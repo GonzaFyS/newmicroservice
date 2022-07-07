@@ -22,7 +22,11 @@ spec:
         imagePullPolicy: Always
         ports:
           - containerPort: 80
+        env:
+        - name: HOST
+          value: "0.0.0.0"
+        - name: PORT
+          value: "80"          
       imagePullSecrets:
       - name: regcred
-
 
