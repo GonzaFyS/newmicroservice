@@ -10,7 +10,7 @@ const isCompiled = path.extname(__filename) === 'js';
 export default {
     "type": `${process.env.DB_TYPE || 'mysql'}`,
     "host": `${process.env.DB_HOST || 'localhost'}`,
-    "port": `${process.env.DB_PORT || 5432}`,
+    "port": `${process.env.DB_PORT || 23306}`,
     "username": `${process.env.DB_USER || 'example'}`,
     "password": `${process.env.DB_PASS || 'example'}`,
     "database": `${process.env.DB_NAME || 'example'}`,
