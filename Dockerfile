@@ -15,6 +15,7 @@ ENV REACT_APP_BUILD=$BUILD
 
 
 RUN npm install
+RUN npm run build
 #RUN npm run test
 
 ENTRYPOINT [ "npm", "run", "start" ]
