@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ms2-dev
-        image: "tgcoriast/ms2:1.0-build${buildNumber}"
+        image: "tgcoriast/ms2:latest"
         imagePullPolicy: Always
         ports:
           - containerPort: 80
