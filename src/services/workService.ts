@@ -1,7 +1,7 @@
 import { itemsEntry } from '../types';
 import boom from '@hapi/boom';
 import {  getCustomRepository } from 'typeorm';
-import { ItemRepository } from '../repository/entityRepository';
+import { JobsRepository } from '../repository/entityRepository';
 
 
 export class workService {  
@@ -11,19 +11,19 @@ export class workService {
 
     async getWork(){
         // const connection = await getConnection();
-        const itemsRepository = await getCustomRepository(ItemRepository);
-        const items = itemsRepository.find();
+        const itemsRepository = await getCustomRepository(JobsRepository);
+        const work = itemsRepository.find();
 
-        if(!items){
+        if(!work){
             throw boom.notFound(`Items not found`);
         } else{
-            return items;
+            return work;
         }
     }
 
-    async getItemById(id: number): Promise<itemsEntry | undefined> {
+    async getWorkById(id: number): Promise<itemsEntry | undefined> {
         // const connection = await getConnection();
-        const itemsRepository = await getCustomRepository(ItemRepository);
+        const itemsRepository = await getCustomRepository(JobsRepository);
 
         const item = await itemsRepository.findOne({where:{id: id}});
 
@@ -36,7 +36,7 @@ export class workService {
 
     async modifyItem(id: number, text: string): Promise<itemsEntry | undefined> {
         // const connection = await getConnection();
-        const itemsRepository = await getCustomRepository(ItemRepository);
+        const itemsRepository = await getCustomRepository(JobsRepository);
 
         const item = await itemsRepository.findOne({where:{id: id}});
 
@@ -51,7 +51,7 @@ export class workService {
 
     async addItem(text: string): Promise<itemsEntry | undefined> {
         // const connection = await getConnection();
-        const itemsRepository = await getCustomRepository(ItemRepository);
+        const itemsRepository = await getCustomRepository(JobsRepository);
 
         if(text.length === 0){
             throw boom.badRequest('Missing text or invalid format');
@@ -65,7 +65,7 @@ export class workService {
 
     async deleteItem(id: number): Promise<itemsEntry | undefined> {
         // const connection = await getConnection();
-        const itemsRepository = await getCustomRepository(ItemRepository);
+        const itemsRepository = await getCustomRepository(JobsRepository);
 
         const item = await itemsRepository.findOne({where:{id: id}});
 
